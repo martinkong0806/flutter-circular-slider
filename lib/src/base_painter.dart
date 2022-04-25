@@ -11,15 +11,15 @@ class BasePainter extends CustomPainter {
   int secondarySectors;
   double sliderStrokeWidth;
 
-  Offset center;
-  double radius;
+  late Offset center;
+  late double radius;
 
   BasePainter({
-    @required this.baseColor,
-    @required this.selectionColor,
-    @required this.primarySectors,
-    @required this.secondarySectors,
-    @required this.sliderStrokeWidth,
+    required this.baseColor,
+    required this.selectionColor,
+    required this.primarySectors,
+    required this.secondarySectors,
+    required this.sliderStrokeWidth,
   });
 
   @override
@@ -63,12 +63,12 @@ class BasePainter extends CustomPainter {
     }
   }
 
-  Paint _getPaint({@required Color color, double width, PaintingStyle style}) =>
+  Paint _getPaint({required Color color, double? width , PaintingStyle style = PaintingStyle.stroke}) =>
       Paint()
         ..color = color
         ..strokeCap = StrokeCap.round
-        ..style = style ?? PaintingStyle.stroke
-        ..strokeWidth = width ?? sliderStrokeWidth;
+        ..style = style
+        ..strokeWidth = width ??  sliderStrokeWidth;
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
